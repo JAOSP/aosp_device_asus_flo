@@ -1,5 +1,5 @@
 #
-# Copyright 2012 The Android Open Source Project
+# Copyright 2013 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 PRODUCT_NAME := aosp_flo
 PRODUCT_DEVICE := flo
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Flo
+PRODUCT_MODEL := L-Preview on Flo
 PRODUCT_MANUFACTURER := ASUS
 PRODUCT_RESTRICT_VENDOR_FILES := true
 
@@ -32,3 +32,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := true
 $(call inherit-product, device/asus/flo/device.mk)
 $(call inherit-product-if-exists, vendor/asus/flo/device-vendor.mk)
 #$(call inherit-product-if-exists, vendor/qcom/proprietary/common/config/device-vendor.mk)
+
+#AOSP
+$(call inherit-product-if-exists, vendor/aosp/asus/flo/aosp.mk)
+$(call inherit-product, device/aosp/common/aosp.mk)

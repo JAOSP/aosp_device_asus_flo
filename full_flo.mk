@@ -13,6 +13,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(call inherit-product, device/asus/flo/aosp_flo.mk)
+
+# Sample: This is where we'd set a backup provider if we had one
+# $(call inherit-product, device/sample/products/backup_overlay.mk)
+
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=razor BUILD_FINGERPRINT=google/razor/flo:4.4.4/KTU84P/1227136:user/release-keys PRIVATE_BUILD_DESC="razor-user 4.4.4 KTU84P 1227136 release-keys"
 
 PRODUCT_NAME := full_flo
+PRODUCT_DEVICE := flo
+PRODUCT_BRAND := google
+PRODUCT_MODEL := Nexus 7
+PRODUCT_MANUFACTURER := asus
+PRODUCT_RESTRICT_VENDOR_FILES := true
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/asus/flo/device.mk)
+$(call inherit-product-if-exists, vendor/asus/flo/device-vendor.mk)
+#$(call inherit-product-if-exists, vendor/qcom/proprietary/common/config/device-vendor.mk)
+
+#AOSP
+$(call inherit-product-if-exists, vendor/aosp/asus/flo/full.mk)
+$(call inherit-product, device/aosp/common/full.mk)
