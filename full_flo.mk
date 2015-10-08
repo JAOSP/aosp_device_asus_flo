@@ -17,6 +17,8 @@
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=razor BUILD_FINGERPRINT=google/razor/flo:6.0/MRA58K/2256973:user/release-keys PRIVATE_BUILD_DESC="razor-user 6.0 MRA58K 2256973 release-keys"
+
 PRODUCT_NAME := full_flo
 PRODUCT_DEVICE := flo
 PRODUCT_BRAND := google
