@@ -4,13 +4,13 @@ VENDOR=asus
 DEVICE=flo
 
 echo "Please wait..."
-wget -nc -q https://dl.google.com/dl/android/aosp/razor-mra58k-factory-300dc903.tgz
-tar zxf razor-mra58k-factory-300dc903.tgz
-rm razor-mra58k-factory-300dc903.tgz
-cd razor-mra58k
-unzip image-razor-mra58k.zip
+wget -nc -q https://dl.google.com/dl/android/aosp/razor-mmb29o-factory-dfe7fcb2.tgz
+tar zxf razor-mmb29o-factory-dfe7fcb2.tgz
+rm razor-mmb29o-factory-dfe7fcb2.tgz
+cd razor-mmb29o
+unzip image-razor-mmb29o.zip
 cd ../
-./simg2img razor-mra58k/system.img system.ext4.img
+./simg2img razor-mmb29o/system.img system.ext4.img
 mkdir system
 sudo mount -o loop -t ext4 system.ext4.img system
 
@@ -22,7 +22,6 @@ for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/s
     if [ ! -d $BASE/$DIR ]; then
         mkdir -p $BASE/$DIR
     fi
-    echo "cp $FILE $BASE/$FILE"
     cp system/$FILE $BASE/$FILE
 
 done
@@ -31,5 +30,5 @@ done
 
 sudo umount system
 rm -rf system
-rm -rf razor-mra58k
+rm -rf razor-mmb29o
 rm system.ext4.img
